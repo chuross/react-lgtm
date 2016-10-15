@@ -1,4 +1,7 @@
 var path = require('path');
+var precss = require('precss');
+var atImport = require('postcss-import');
+var autoprefixer = require('autoprefixer');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var WebpackNotifierPlugin = require('webpack-notifier');
 
@@ -30,9 +33,12 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: 'style!css'
+        loader: 'style!css!postcss'
       }
     ]
+  },
+  postcss: function() {
+    return [atImport, autoprefixer, precss];
   },
   resolve: {
     root: [jsDir, cssDir],
