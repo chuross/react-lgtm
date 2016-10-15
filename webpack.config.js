@@ -27,9 +27,13 @@ module.exports = {
         test: /(\.js$|\.jsx$)/,
         loader: 'babel',
         exclude: /node_modules/
+      },
+      {
+        test: /\.css$/,
+        loader: 'style!css'
       }
     ]
-  }
+  },
   resolve: {
     root: [jsDir, cssDir],
     extensions: ['', '.js', '.jsx']
