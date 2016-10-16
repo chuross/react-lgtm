@@ -16,19 +16,21 @@ export default class Root extends Component {
     return (
       <div>
         <Appbar title="LGTM画像アップローダー" iconElementLeft={<span />} />
-        <Paper className={styles.description_wrapper}>
-          <Subheader>画像のアップロード</Subheader>
-          <div className={styles.description_text}>
-            <div><Icon name="upload" size="5x" /></div>
-            <p>アップロードする画像を選択</p>
-            <p>ファイルをドラッグ&amp;ドロップすることもできます</p>
-            <RaisedButton label="画像をアップロード" primary={true} />
-          </div>
-        </Paper>
+        <div className={styles.upload_container}>
+          <Paper className={styles.description_paper}>
+            <Subheader>画像のアップロード</Subheader>
+            <div className={styles.description_upload}>
+              <div><Icon name="upload" size="5x" /></div>
+              <p className={styles.description_upload_text}>アップロードする画像を選択</p>
+              <p className={styles.description_upload_subtext}>ファイルをドラッグ&amp;ドロップすることもできます</p>
+              <RaisedButton className={styles.description_upload_button} label="画像をアップロード" primary={true} />
+            </div>
+          </Paper>
+        </div>
         <Divider />
         <div className={styles.image_grid_wrapper}>
           <GridList cols={6} cellHeight={200} padding={10}>
-            <Subheader>過去に投稿した一覧</Subheader>
+            <Subheader>LGTM一覧</Subheader>
             <GridTile>
               <img src="http://image.rakuten.co.jp/art298/cabinet/panel/fukusima/227sawa1145x75.jpg" />
             </GridTile>

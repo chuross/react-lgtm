@@ -1,13 +1,33 @@
 @import "normalize.css";
 
-:local .description_wrapper {
-  width: 80%;
-  margin: 20px auto;
+:local .upload_container {
+  background: #e0e0e0;
+  padding: 20px;
 }
 
-:local .description_text {
+:local .description_paper {
+  width: 80%;
+  margin: 0 auto;
+}
+
+:local .description_upload {
   padding: 15px;
   text-align: center;
+}
+
+:local .description_upload_text {
+  font-size: 25px;
+  margin: 5px;
+}
+
+:local .description_upload_subtext {
+  color: #999999;
+  font-size: 15px;
+  margin: 5px;
+}
+
+:local .description_upload_button {
+  margin: 25px;
 }
 
 :local .image_grid_wrapper {
