@@ -5,6 +5,7 @@ var localByDefault = require('postcss-modules-local-by-default');
 var autoprefixer = require('autoprefixer');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var WebpackNotifierPlugin = require('webpack-notifier');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const jsDir = path.resolve('src/js');
 const cssDir = path.resolve('src/css');
@@ -23,7 +24,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve('index.template.html')
     }),
-    new WebpackNotifierPlugin()
+    new WebpackNotifierPlugin(),
+    new ExtractTextPlugin('bundle.css')
   ],
   module: {
     loaders: [
@@ -34,12 +36,20 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: 'style!css!postcss'
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader')
+      },
+      {
+        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: 'url-loader?limit=10000&mimetype=application/font-woff'
+      },
+      {
+        test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: 'file-loader'
       }
     ]
   },
   postcss: function() {
-    return [atImport, autoprefixer, precss, localByDefault];
+    return [atImport, autoprefixer, precss];
   },
   resolve: {
     root: [jsDir, cssDir],

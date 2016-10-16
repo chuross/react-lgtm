@@ -7,6 +7,7 @@ import { Toolbar } from 'material-ui/Toolbar'
 import { GridList, GridTile } from 'material-ui/GridList'
 import Subheader from 'material-ui/SubHeader'
 import styles from 'root.css'
+import { Icon } from 'react-fa'
 
 
 export default class Root extends Component {
@@ -19,6 +20,7 @@ export default class Root extends Component {
           <Subheader>画像のアップロード</Subheader>
           <div className={styles.description_text}>
             <RaisedButton label="画像をアップロード" primary={true} />
+            <Icon spin name="spinner" />
           </div>
         </Paper>
         <Divider />

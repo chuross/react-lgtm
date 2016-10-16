@@ -1,15 +1,15 @@
 @import "normalize.css";
 
-.description_wrapper {
+:local .description_wrapper {
   width: 80%;
   margin: 20px auto;
 }
 
-.description_text {
+:local .description_text {
   padding: 15px;
 }
 
-.image_grid_wrapper {
+:local .image_grid_wrapper {
   width: 90%;
   margin: 10px auto;
 }
