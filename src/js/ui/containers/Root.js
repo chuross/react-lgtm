@@ -6,8 +6,8 @@ import RaisedButton from 'material-ui/RaisedButton'
 import { Toolbar } from 'material-ui/Toolbar'
 import { GridList, GridTile } from 'material-ui/GridList'
 import Subheader from 'material-ui/SubHeader'
-import styles from 'root.css'
 import { Icon } from 'react-fa'
+import styles from 'root.css'
 
 
 export default class Root extends Component {
@@ -19,9 +19,9 @@ export default class Root extends Component {
         <Paper className={styles.description_wrapper}>
           <Subheader>画像のアップロード</Subheader>
           <div className={styles.description_text}>
-            <div>
-              <Icon name="upload" size="5x" />
-            </div>
+            <div><Icon name="upload" size="5x" /></div>
+            <p>アップロードする画像を選択</p>
+            <p>ファイルをドラッグ&amp;ドロップすることもできます</p>
             <RaisedButton label="画像をアップロード" primary={true} />
           </div>
         </Paper>
