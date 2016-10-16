@@ -20,6 +20,7 @@
     "html-webpack-plugin": "^2.22.0",
     "postcss-import": "^8.1.2",
     "postcss-loader": "^0.13.0",
+    "postcss-modules-local-by-default": "^1.1.1",
     "precss": "^1.4.0",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.2",
