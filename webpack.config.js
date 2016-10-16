@@ -1,7 +1,6 @@
 var path = require('path');
 var precss = require('precss');
 var atImport = require('postcss-import');
-var localByDefault = require('postcss-modules-local-by-default');
 var autoprefixer = require('autoprefixer');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var WebpackNotifierPlugin = require('webpack-notifier');
