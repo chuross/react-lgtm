@@ -13,6 +13,10 @@ import styles from 'root.css'
 
 export default class Root extends Component {
 
+  onDrop(acceptedFiles, rejectedFiles) {
+    console.log(acceptedFiles);
+  }
+
   render() {
     return (
       <div>
@@ -21,7 +25,10 @@ export default class Root extends Component {
           <Paper className={styles.description_paper}>
             <Subheader>画像のアップロード</Subheader>
             <div className={styles.description_upload}>
-              <DropZone className={styles.description_upload_dropzone} multiple={true}>
+              <DropZone
+                className={styles.description_upload_dropzone}
+                accept="image/gif,image/jpeg,image/png,image/jpg"
+                onDrop={this.onDrop}>
                 <div><Icon name="upload" size="5x" /></div>
                 <p className={styles.description_upload_text}>画像をここにドラッグ&amp;ドロップ</p>
               </DropZone>
