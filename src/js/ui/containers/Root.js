@@ -7,6 +7,7 @@ import { Toolbar } from 'material-ui/Toolbar'
 import { GridList, GridTile } from 'material-ui/GridList'
 import Subheader from 'material-ui/SubHeader'
 import { Icon } from 'react-fa'
+import DropZone from 'react-dropzone'
 import styles from 'root.css'
 
 
@@ -20,10 +21,12 @@ export default class Root extends Component {
           <Paper className={styles.description_paper}>
             <Subheader>画像のアップロード</Subheader>
             <div className={styles.description_upload}>
-              <div><Icon name="upload" size="5x" /></div>
-              <p className={styles.description_upload_text}>アップロードする画像を選択</p>
-              <p className={styles.description_upload_subtext}>ファイルをドラッグ&amp;ドロップすることもできます</p>
-              <RaisedButton className={styles.description_upload_button} label="画像をアップロード" primary={true} />
+              <DropZone className={styles.description_upload_dropzone} multiple="true">
+                <div><Icon name="upload" size="5x" /></div>
+                <p className={styles.description_upload_text}>画像をここにドラッグ&amp;ドロップ</p>
+              </DropZone>
+              <p className={styles.description_upload_subtext}>または下のボタンから画像を選択できます</p>
+              <RaisedButton className={styles.description_upload_button} label="画像を選択" primary={true} />
             </div>
           </Paper>
         </div>
