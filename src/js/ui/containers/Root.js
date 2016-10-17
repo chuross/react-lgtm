@@ -13,7 +13,11 @@ import styles from 'root.css'
 
 export default class Root extends Component {
 
-  onDrop(acceptedFiles, rejectedFiles) {
+  onUploadButtonClick() {
+    this.dropzone.open();
+  }
+
+  onImageDrop(acceptedFiles, rejectedFiles) {
     console.log(acceptedFiles);
   }
 
@@ -27,13 +31,19 @@ export default class Root extends Component {
             <div className={styles.description_upload}>
               <DropZone
                 className={styles.description_upload_dropzone}
+                ref={(node) => { console.log(this); this.dropzone = node; }}
                 accept="image/gif,image/jpeg,image/png,image/jpg"
-                onDrop={this.onDrop}>
+                disableClick={true}
+                onDrop={this.onImageDrop}>
                 <div><Icon name="upload" size="5x" /></div>
                 <p className={styles.description_upload_text}>画像をここにドラッグ&amp;ドロップ</p>
               </DropZone>
               <p className={styles.description_upload_subtext}>または下のボタンから画像を選択できます</p>
-              <RaisedButton className={styles.description_upload_button} label="画像を選択" primary={true} />
+              <RaisedButton
+                className={styles.description_upload_button}
+                label="画像を選択"
+                primary={true}
+                onClick={this.onUploadButtonClick.bind(this)} />
             </div>
           </Paper>
         </div>
