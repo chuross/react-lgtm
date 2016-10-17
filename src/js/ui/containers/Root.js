@@ -31,7 +31,7 @@ export default class Root extends Component {
             <div className={styles.description_upload}>
               <DropZone
                 className={styles.description_upload_dropzone}
-                ref={(node) => { console.log(this); this.dropzone = node; }}
+                ref={(node) => { this.dropzone = node; }}
                 accept="image/gif,image/jpeg,image/png,image/jpg"
                 disableClick={true}
                 onDrop={this.onImageDrop}>
