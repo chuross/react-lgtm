@@ -21,7 +21,7 @@ export default class Root extends Component {
           <Paper className={styles.description_paper}>
             <Subheader>画像のアップロード</Subheader>
             <div className={styles.description_upload}>
-              <DropZone className={styles.description_upload_dropzone} multiple="true">
+              <DropZone className={styles.description_upload_dropzone} multiple={true}>
                 <div><Icon name="upload" size="5x" /></div>
                 <p className={styles.description_upload_text}>画像をここにドラッグ&amp;ドロップ</p>
               </DropZone>
@@ -32,13 +32,10 @@ export default class Root extends Component {
         </div>
         <Divider />
         <div className={styles.image_grid_wrapper}>
-          <GridList cols={6} cellHeight={200} padding={10}>
+          <GridList cols={5} cellHeight={200} padding={10}>
             <Subheader>LGTM一覧</Subheader>
             <GridTile>
-              <img src="http://image.rakuten.co.jp/art298/cabinet/panel/fukusima/227sawa1145x75.jpg" />
-            </GridTile>
-            <GridTile>
-              <img src="http://image.rakuten.co.jp/art298/cabinet/panel/fukusima/227sawa1145x75.jpg" />
+              <img className={styles.image} src="http://image.rakuten.co.jp/art298/cabinet/panel/fukusima/227sawa1145x75.jpg" />
             </GridTile>
           </GridList>
         </div>
