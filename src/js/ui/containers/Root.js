@@ -9,7 +9,7 @@ import RaisedButton from 'material-ui/RaisedButton'
 import { Toolbar } from 'material-ui/Toolbar'
 import { GridList, GridTile } from 'material-ui/GridList'
 import Subheader from 'material-ui/SubHeader'
-import { Icon } from 'react-fa'
+import FileUploadIcon from 'material-ui/svg-icons/file/file-upload'
 import DropZone from 'react-dropzone'
 import styles from 'root.css'
 
@@ -45,7 +45,7 @@ export default class Root extends Component {
                 accept="image/gif,image/jpeg,image/png,image/jpg"
                 disableClick={true}
                 onDrop={this.onImageDrop.bind(this)}>
-                <div><Icon name="upload" size="5x" /></div>
+                <div><FileUploadIcon style={{ width: '100px', height: '100px'}} /></div>
                 <p className={styles.description_upload_text}>画像をここにドラッグ&amp;ドロップ</p>
               </DropZone>
               <p className={styles.description_upload_subtext}>または下のボタンから画像を選択できます</p>
