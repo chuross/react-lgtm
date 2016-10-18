@@ -2,6 +2,7 @@ var path = require('path');
 var precss = require('precss');
 var atImport = require('postcss-import');
 var autoprefixer = require('autoprefixer');
+var webpackHtmlTemplate = require('html-webpack-template');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var WebpackNotifierPlugin = require('webpack-notifier');
 
@@ -20,7 +21,10 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve('index.template.html')
+      inject: false,
+      template: webpackHtmlTemplate,
+      appMountId: 'app',
+      title: 'LGTM画像アップローダー'
     }),
     new WebpackNotifierPlugin()
   ],

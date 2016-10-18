@@ -19,6 +19,7 @@
     "babel-preset-react": "^6.16.0",
     "css-loader": "^0.25.0",
     "html-webpack-plugin": "^2.22.0",
+    "html-webpack-template": "^5.4.1",
     "postcss-import": "^8.1.2",
     "postcss-loader": "^0.13.0",
     "precss": "^1.4.0",
