@@ -50,7 +50,6 @@ export default class Root extends Component {
         <Divider />
         <div className={styles.image_grid_wrapper}>
           <GridList cols={5} cellHeight={200} padding={10}>
-            <Subheader>LGTM一覧</Subheader>
             <GridTile>
               <img className={styles.image} src="http://image.rakuten.co.jp/art298/cabinet/panel/fukusima/227sawa1145x75.jpg" />
             </GridTile>
