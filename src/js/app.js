@@ -8,7 +8,7 @@ import Root from 'ui/containers/Root'
 
 const theme = Object.assign({}, baseTheme, {
   palette: {
-    primary1Color: '#00C853'
+    primary1Color: '#FFB300'
   }
 });
 const store = createStore(reducer);
