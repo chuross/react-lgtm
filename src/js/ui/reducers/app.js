@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
-import rootReducer from 'ui/reducers/root'
+import root from 'ui/reducers/root'
 
 export default combineReducers({
-  rootReducer
+  root
 });
