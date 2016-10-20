@@ -15,7 +15,7 @@ import styles from 'root.css'
 
 const maxImageSize = 400;
 const lgtmOffset = 20;
-const lgtmFontSize = 40;
+const lgtmFontSize = 50;
 
 @connect(state => ({
   file: state.root.file
