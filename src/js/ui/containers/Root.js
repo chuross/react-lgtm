@@ -14,8 +14,7 @@ import DropZone from 'react-dropzone'
 import styles from 'root.css'
 
 const maxImageSize = 400;
-const lgtmRelativeX = 0.9;
-const lgtmRelativeY = 0.98;
+const lgtmOffset = 20;
 const lgtmFontSize = 40;
 
 @connect(state => ({
@@ -53,12 +52,14 @@ export default class Root extends Component {
 
       const context = canvas.getContext('2d');
       context.drawImage(image, 0, 0, width, height);
-      context.font = `${lgtmFontSize}px Arial`;
+      context.font = `${lgtmFontSize}px Arial Black`;
+      context.lineWidth = 5;
       context.fillStyle = 'white';
       context.textAlign = 'right';
       context.textBaseline = 'bottom';
-      context.fillText('LGTM', width * lgtmRelativeX, height * lgtmRelativeY, width);
-      context.strokeText('LGTM', width * lgtmRelativeX, height * lgtmRelativeY, width);
+
+      context.strokeText('LGTM', width - lgtmOffset, height - lgtmOffset, width - lgtmOffset);
+      context.fillText('LGTM', width - lgtmOffset, height - lgtmOffset, width  - lgtmOffset);
     }
   }
 
