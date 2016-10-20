@@ -13,6 +13,11 @@ import FileUploadIcon from 'material-ui/svg-icons/file/file-upload'
 import DropZone from 'react-dropzone'
 import styles from 'root.css'
 
+const maxImageSize = 400;
+const lgtmRelativeX = 0.9;
+const lgtmRelativeY = 0.98;
+const lgtmFontSize = 40;
+
 @connect(state => ({
   file: state.root.file
 }), dispatch => ({
@@ -39,10 +44,21 @@ export default class Root extends Component {
     const image = new Image();
     image.src = props.file.preview;
     image.onload = () => {
-      canvas.width = image.width;
-      canvas.height = image.height;
+      const scale = maxImageSize / Math.max(image.width, image.height);
+      const width = scale < 1 ? image.width * scale : image.width;
+      const height = scale < 1 ? image.height * scale : image.height;
+
+      canvas.width = width;
+      canvas.height = height;
+
       const context = canvas.getContext('2d');
-      context.drawImage(image, 0, 0, 300, 300);
+      context.drawImage(image, 0, 0, width, height);
+      context.font = `${lgtmFontSize}px Arial`;
+      context.fillStyle = 'white';
+      context.textAlign = 'right';
+      context.textBaseline = 'bottom';
+      context.fillText('LGTM', width * lgtmRelativeX, height * lgtmRelativeY, width);
+      context.strokeText('LGTM', width * lgtmRelativeX, height * lgtmRelativeY, width);
     }
   }
 
