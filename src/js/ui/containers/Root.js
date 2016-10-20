@@ -20,6 +20,12 @@ import styles from 'root.css'
 }))
 export default class Root extends Component {
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.file) {
+      this.updateImageCanvas(nextProps);
+    }
+  }
+
   onUploadButtonClick() {
     this.dropzone.open();
   }
@@ -28,7 +34,16 @@ export default class Root extends Component {
     this.props.actions.uploadFileAction(acceptedFiles[0]);
   }
 
-  drawLgtmImage() {
+  updateImageCanvas(props) {
+    const canvas = this.refs.canvas;
+    const image = new Image();
+    image.src = props.file.preview;
+    image.onload = () => {
+      canvas.width = image.width;
+      canvas.height = image.height;
+      const context = canvas.getContext('2d');
+      context.drawImage(image, 0, 0, 300, 300);
+    }
   }
 
   render() {
@@ -56,7 +71,7 @@ export default class Root extends Component {
                 onClick={this.onUploadButtonClick.bind(this)} />
             </div>
           </Paper>
-          { (() => { if (this.props.file != null) return <img src={this.props.file.preview} /> })() }
+          <canvas ref="canvas" className="image" />
         </div>
         <Divider />
         <div className={styles.image_grid_wrapper}>
