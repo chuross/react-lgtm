@@ -1,7 +1,7 @@
 {
-  "name": "react-lgtm",
+  "name": "react-lgtm-app",
   "version": "1.0.0",
-  "description": "React製LGTMアップローダー",
+  "description": "React製LGTMアップローダー(APP側)",
   "main": "index.js",
   "scripts": {
     "start": "webpack --config webpack.config.js",
