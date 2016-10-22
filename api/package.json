@@ -1,7 +1,7 @@
 {
-  "name": "react-lgtm-server",
+  "name": "react-lgtm-api",
   "version": "1.0.0",
-  "description": "React製LGTMアップローダー(Server側)",
+  "description": "React製LGTMアップローダー(API側)",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

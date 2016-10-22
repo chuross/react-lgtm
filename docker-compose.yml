@@ -6,10 +6,10 @@ services:
     container_name: react-lgtm-app
     ports:
       - 8080:8080
-  server:
-    build: server/
-    image: chuross/react-lgtm-server
-    container_name: react-lgtm-server
+  api:
+    build: api/
+    image: chuross/react-lgtm-api
+    container_name: react-lgtm-api
     links:
       - react-lgtm-mongo:mongo
   mongo:
