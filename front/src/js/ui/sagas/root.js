@@ -5,7 +5,7 @@ import { uploadFileAction, uploadFileSuccessAction, uploadFileFailAction } from 
 
 function* uploadFile(action) {
   try {
-    const { result, error } = yield call(LgtmApi.uploadFile, action.payload);
+    const { result, error } = yield call(LgtmApi.uploadImage, action.payload);
     yield put(uploadFileSuccessAction(result));
   } catch(e) {
     yield put(uploadFileFailAction(e));
