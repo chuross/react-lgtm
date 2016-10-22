@@ -41,7 +41,8 @@ app.get('/', (req, res) => {
 app.get('/uploads', (req, res) => {
   Image.find({}, {}, {
     sort: { createdAt: -1 },
-    limit: 20
+    skip: req.query.offset || 0,
+    limit: req.query.limit || 20
   })
   .then(images => {
     res.json(getResult(images.map(image => ({
