@@ -88,7 +88,7 @@ app.post('/uploads', cors(delegate), upload.single('file'), (req, res) => {
 app.get('/uploads/:id', cors(delegate), (req,  res) => {
   Image.findOne({ id: req.params.id }).exec()
     .then(image => {
-      const data =fs.readFileSync(path.resolve(`uploads/${image.id}`));
+      const data = fs.readFileSync(path.resolve(`uploads/${image.id}`));
       res.set('Content-Type', image.mimeType).end(new Buffer(data), 'binary');
     })
     .catch(err => res.status(404)));
@@ -96,6 +96,7 @@ app.get('/uploads/:id', cors(delegate), (req,  res) => {
 
 app.delete('/uploads/:id', cors(delegate), (req, res) => {
   Image.remove({ id: req.params.id }).exec()
+    .then(() => fs.unlinkSync(path.resolve(`uploads/${req.params.id}`)))
     .then(() => res.send(getResult(true)))
     .catch(err => res.send(getResult('削除に失敗しました')));
 });
