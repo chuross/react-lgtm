@@ -1,7 +1,7 @@
 version: '2'
 services:
   front:
-    build: app/
+    build: front/
     image: chuross/react-lgtm-front
     container_name: react-lgtm-front
     ports:
@@ -10,8 +10,10 @@ services:
     build: api/
     image: chuross/react-lgtm-api
     container_name: react-lgtm-api
+    ports:
+      - 3000:3000
     links:
-      - react-lgtm-mongo:mongo
+      - mongo:mongo
   mongo:
     image: tutum/mongodb
     container_name: react-lgtm-mongo
