@@ -4,6 +4,8 @@ services:
     build: app/
     image: chuross/react-lgtm-app
     container_name: react-lgtm-app
+    ports:
+      - 8080:8080
   server:
     build: server/
     image: chuross/react-lgtm-server
