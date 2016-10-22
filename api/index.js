@@ -91,5 +91,11 @@ app.get('/uploads/:id', cors(delegate), (req,  res) => {
       const data =fs.readFileSync(path.resolve(`uploads/${image.id}`));
       res.set('Content-Type', image.mimeType).end(new Buffer(data), 'binary');
     })
-    .catch(err => res.status(404).json(getResult('画像がありません')));
+    .catch(err => res.status(404)));
+});
+
+app.delete('/uploads/:id', cors(delegate), (req, res) => {
+  Image.remove({ id: req.params.id }).exec()
+    .then(() => res.send(getResult(true)))
+    .catch(err => res.send(getResult('削除に失敗しました')));
 });
