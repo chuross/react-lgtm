@@ -10,5 +10,10 @@ services:
     build: server/
     image: chuross/react-lgtm-server
     container_name: react-lgtm-server
+    links:
+      - react-lgtm-mongo:mongo
   mongo:
-    image: mongo
+    image: tutum/mongodb
+    container_name: react-lgtm-mongo
+    environment:
+      AUTH: no
