@@ -17,7 +17,9 @@ mongoose.connect(`mongodb://${mongoHost}/lgtm`);
 const Image = mongoose.model('image', new Schema({
   id: { type: String, required: true, unique: true },
   mimeType: { type: String, required: true },
-  size: { type: Number }
+  size: { type: Number },
+  createdAt: { type: Date, default: Date.now },
+  updatedAt: { type: Date, default: Date.now }
 }));
 
 const upload = multer({
@@ -34,6 +36,20 @@ function getResult(payload) {
 
 app.get('/', (req, res) => {
   res.json(getResult('welcome'));
+});
+
+app.get('/uploads', (req, res) => {
+  Image.find({}, {}, {
+    sort: { createdAt: -1 },
+    limit: 20
+  })
+  .then(images => {
+    res.json(getResult(images.map(image => ({
+      id: image.id,
+      size: image.size,
+      url: `${baseUrl}/uploads/${image.id}`
+    }))));
+  });
 });
 
 app.post('/uploads', upload.single('file'), (req, res) => {
