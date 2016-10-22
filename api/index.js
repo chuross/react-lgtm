@@ -15,5 +15,9 @@ const upload = multer({
   }
 });
 
+app.get('/', (req, res) => {
+  res.json({ result: "welcome" });
+});
+
 app.post('/upload', upload.single('file'), (req, res) => {
 });
