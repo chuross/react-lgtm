@@ -1,9 +1,9 @@
 version: '2'
 services:
-  app:
+  front:
     build: app/
-    image: chuross/react-lgtm-app
-    container_name: react-lgtm-app
+    image: chuross/react-lgtm-front
+    container_name: react-lgtm-front
     ports:
       - 8080:8080
   api:
