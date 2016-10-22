@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack --config webpack.config.js",
+    "build" : "npm start",
+    "build:dev": "webpack --config webpack.dev.config.js",
     "watch": "webpack-dev-server --hot --inline"
   },
   "author": "",

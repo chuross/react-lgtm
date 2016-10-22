@@ -1,0 +1,12 @@
+version: '2'
+services:
+  app:
+    build: app/
+    image: chuross/react-lgtm-app
+    container_name: react-lgtm-app
+  server:
+    build: server/
+    image: chuross/react-lgtm-server
+    container_name: react-lgtm-server
+  mongo:
+    image: mongo

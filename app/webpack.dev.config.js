@@ -4,12 +4,17 @@ var atImport = require('postcss-import');
 var autoprefixer = require('autoprefixer');
 var webpackHtmlTemplate = require('html-webpack-template');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var WebpackNotifierPlugin = require('webpack-notifier');
 
 const jsDir = path.resolve('src/js');
 const cssDir = path.resolve('src/css');
 
 module.exports = {
-  entry: `${jsDir}/app.js`,
+  entry: [
+    'webpack-dev-server/client?http://localhost:8080',
+    'webpack/hot/only-dev-server',
+    `${jsDir}/app.js`
+  ],
   output: {
     path: path.resolve('public'),
     filename: 'bundle.js'
@@ -20,7 +25,8 @@ module.exports = {
       template: webpackHtmlTemplate,
       appMountId: 'app',
       title: 'LGTM画像アップローダー'
-    })
+    }),
+    new WebpackNotifierPlugin()
   ],
   module: {
     loaders: [
