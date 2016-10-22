@@ -18,4 +18,4 @@ services:
     image: tutum/mongodb
     container_name: react-lgtm-mongo
     environment:
-      AUTH: no
+      AUTH: "no"
