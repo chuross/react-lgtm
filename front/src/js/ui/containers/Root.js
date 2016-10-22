@@ -24,24 +24,18 @@ const lgtmFontSize = 50;
 }))
 export default class Root extends Component {
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.file) {
-      this.updateImageCanvas(nextProps);
-    }
-  }
-
   onUploadButtonClick() {
     this.dropzone.open();
   }
 
   onImageDrop(acceptedFiles, rejectedFiles) {
-    this.props.actions.uploadFileAction(acceptedFiles[0]);
+    this.uploadImageFile(acceptedFiles[0]);
   }
 
-  updateImageCanvas(props) {
+  uploadImageFile(file) {
     const canvas = this.refs.canvas;
     const image = new Image();
-    image.src = props.file.preview;
+    image.src = file.preview;
     image.onload = () => {
       const scale = maxImageSize / Math.max(image.width, image.height);
       const width = scale < 1 ? image.width * scale : image.width;
@@ -60,6 +54,8 @@ export default class Root extends Component {
 
       context.strokeText('LGTM', width - lgtmOffset, height - lgtmOffset, width - lgtmOffset);
       context.fillText('LGTM', width - lgtmOffset, height - lgtmOffset, width  - lgtmOffset);
+
+      // this.props.actions.uploadFileAction();
     }
   }
 

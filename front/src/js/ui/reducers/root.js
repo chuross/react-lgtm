@@ -8,7 +8,7 @@ const defaultState = {
 export default function uploadFile(state = defaultState, action) {
   return handleActions({
     [uploadFileAction]: (state, action) => ({
-      file: action.payload
+      file: null
     })
   }, state)(state, action);
 }

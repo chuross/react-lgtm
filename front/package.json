@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack --config webpack.config.js",
-    "build" : "npm start",
+    "build": "npm start",
     "build:dev": "webpack --config webpack.dev.config.js",
     "watch": "webpack-dev-server --hot --inline"
   },
@@ -31,6 +31,7 @@
     "webpack-notifier": "^1.4.1"
   },
   "dependencies": {
+    "axios": "^0.15.2",
     "babel-polyfill": "^6.16.0",
     "material-ui": "^0.16.0",
     "normalize.css": "^5.0.0",
