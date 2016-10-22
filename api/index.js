@@ -8,7 +8,7 @@ const multer  = require('multer');
 const baseUrl = process.env.BASE_URL;
 const port = process.env.PORT || 3000;
 const mongoHost = process.env.MONGODB_HOST || 'mongo';
-const maxFileSize = process.env.MAX_FILE_SIZE = 1 * 1000 * 1000; // 1M
+const maxFileSize = process.env.MAX_FILE_SIZE || 1 * 1000 * 1000; // 1M
 
 const app = express();
 app.listen(port, () => console.log(`launch server port=${port}`));
