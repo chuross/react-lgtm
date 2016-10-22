@@ -55,7 +55,7 @@ export default class Root extends Component {
       context.strokeText('LGTM', width - lgtmOffset, height - lgtmOffset, width - lgtmOffset);
       context.fillText('LGTM', width - lgtmOffset, height - lgtmOffset, width  - lgtmOffset);
 
-      // this.props.actions.uploadFileAction();
+      canvas.toBlob(blob => this.props.actions.uploadFileAction(blob));
     }
   }
 

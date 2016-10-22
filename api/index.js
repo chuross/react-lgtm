@@ -3,6 +3,7 @@ const path = require('path');
 const express = require('express');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const cors = require('cors');
 const multer  = require('multer');
 
 const baseUrl = process.env.BASE_URL;
@@ -22,6 +23,10 @@ const Image = mongoose.model('image', new Schema({
   updatedAt: { type: Date, default: Date.now }
 }));
 
+const delegate = (res, callback) => {
+  return callback(null, { origin: true });
+};
+
 const upload = multer({
   dest: 'uploads/',
   limists: {
@@ -38,7 +43,7 @@ app.get('/', (req, res) => {
   res.json(getResult('welcome'));
 });
 
-app.get('/uploads', (req, res) => {
+app.get('/uploads', cors(delegate), (req, res) => {
   Image.find({}, {}, {
     sort: { createdAt: -1 },
     skip: req.query.offset || 0,
@@ -53,7 +58,7 @@ app.get('/uploads', (req, res) => {
   });
 });
 
-app.post('/uploads', upload.single('file'), (req, res) => {
+app.post('/uploads', cors(delegate), upload.single('file'), (req, res) => {
   if (!req.file) {
     res.status(400).json(getResult('ファイルがアップロードされていません'));
     return;
@@ -80,7 +85,7 @@ app.post('/uploads', upload.single('file'), (req, res) => {
     });
 });
 
-app.get('/uploads/:id', (req,  res) => {
+app.get('/uploads/:id', cors(delegate), (req,  res) => {
   Image.findOne({ id: req.params.id }).exec()
     .then(image => {
       const data =fs.readFileSync(path.resolve(`uploads/${image.id}`));
