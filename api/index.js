@@ -49,31 +49,25 @@ app.post('/uploads', upload.single('file'), (req, res) => {
   image.size = size;
   image.mimeType = mimetype;
 
-  image.save(err => {
-    if (err) {
+  image.save()
+    .then(Image.findOne({ id: image.id }).exec())
+    .then(result => {
+      res.json(getResult({
+        id: result.id,
+        size: result.size,
+        url: `${baseUrl}/uploads/${filename}`
+      }));
+    })
+    .catch(err => {
       res.json(getResult('アップロードに失敗しました'));
-    } else {
-      Image.find({ id: filename }, (err, images) => {
-        const image = images[0];
-        res.json(getResult({
-          id: image.id,
-          size: image.size,
-          url: `${baseUrl}/uploads/${filename}`
-        }));
-      });
-    }
-  });
+    });
 });
 
 app.get('/uploads/:id', (req,  res) => {
-  Image.find({ id: req.params.id }, (err, images) => {
-    if (err) {
-      res.status(404).json(getResult('画像がありません'));
-      return;
-    }
-
-    const image = images[0];
-    const data =fs.readFileSync(path.resolve(`uploads/${image.id}`));
-    res.end(new Buffer(data), 'binary');
-  });
+  Image.findOne({ id: req.params.id }).exec()
+    .then(image => {
+      const data =fs.readFileSync(path.resolve(`uploads/${image.id}`));
+      res.end(new Buffer(data), 'binary');
+    })
+    .catch(err => res.status(404).json(getResult('画像がありません')));
 });
