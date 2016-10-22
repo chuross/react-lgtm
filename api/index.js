@@ -67,7 +67,7 @@ app.get('/uploads/:id', (req,  res) => {
   Image.findOne({ id: req.params.id }).exec()
     .then(image => {
       const data =fs.readFileSync(path.resolve(`uploads/${image.id}`));
-      res.end(new Buffer(data), 'binary');
+      res.set('Content-Type', image.mimeType).end(new Buffer(data), 'binary');
     })
     .catch(err => res.status(404).json(getResult('画像がありません')));
 });
