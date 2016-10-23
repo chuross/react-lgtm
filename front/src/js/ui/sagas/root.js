@@ -1,17 +1,35 @@
 import { takeEvery } from 'redux-saga'
-import { call, put } from 'redux-saga/effects'
+import { call, put, fork } from 'redux-saga/effects'
 import LgtmApi from 'infrastructure/LgtmApi'
-import { uploadFileAction, uploadFileSuccessAction, uploadFileFailAction } from 'ui/actions/root'
+import * as actions from 'ui/actions/root'
 
-function* uploadFile(action) {
+function* fetchImages(action) {
   try {
-    const { result, error } = yield call(LgtmApi.uploadImage, action.payload);
-    yield put(uploadFileSuccessAction(result));
+    const result = yield call(LgtmApi.getImages);
+    yield put(actions.fetchImagesSuccess(result));
   } catch(e) {
-    yield put(uploadFileFailAction(e));
+    yield put(actions.fetchImagesFail(e));
   }
 }
 
+function* handleFetchImages() {
+  yield* takeEvery(actions.fetchImages.toString(), fetchImages);
+}
+
+function* uploadImage(action) {
+  try {
+    const result = yield call(LgtmApi.uploadImage, action.payload);
+    yield put(actions.uploadImageSuccess(result));
+  } catch(e) {
+    yield put(actions.uploadImageFail(e));
+  }
+}
+
+function* handleUploadImage() {
+  yield* takeEvery(actions.uploadImage.toString(), uploadImage);
+}
+
 export default function* root() {
-  yield* takeEvery(uploadFileAction().type, uploadFile);
+  yield fork(handleFetchImages);
+  yield fork(handleUploadImage);
 }

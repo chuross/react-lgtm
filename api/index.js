@@ -91,7 +91,7 @@ app.get('/uploads/:id', cors(delegate), (req,  res) => {
       const data = fs.readFileSync(path.resolve(`uploads/${image.id}`));
       res.set('Content-Type', image.mimeType).end(new Buffer(data), 'binary');
     })
-    .catch(err => res.status(404)));
+    .catch(err => res.status(404));
 });
 
 app.delete('/uploads/:id', cors(delegate), (req, res) => {

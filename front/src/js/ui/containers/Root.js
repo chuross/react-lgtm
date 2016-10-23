@@ -18,7 +18,7 @@ const lgtmOffset = 20;
 const lgtmFontSize = 50;
 
 @connect(state => ({
-  file: state.root.file
+  files: state.root.files || []
 }), dispatch => ({
   actions: bindActionCreators(actionCreators, dispatch)
 }))
@@ -55,8 +55,12 @@ export default class Root extends Component {
       context.strokeText('LGTM', width - lgtmOffset, height - lgtmOffset, width - lgtmOffset);
       context.fillText('LGTM', width - lgtmOffset, height - lgtmOffset, width  - lgtmOffset);
 
-      canvas.toBlob(blob => this.props.actions.uploadFileAction(blob));
+      canvas.toBlob(blob => this.props.actions.uploadImage(blob));
     }
+  }
+
+  componentDidMount() {
+    this.props.actions.fetchImages();
   }
 
   render() {
@@ -89,9 +93,11 @@ export default class Root extends Component {
         <Divider />
         <div className={styles.image_grid_wrapper}>
           <GridList cols={5} cellHeight={200} padding={10}>
-            <GridTile>
-              <img className={styles.image} src="http://image.rakuten.co.jp/art298/cabinet/panel/fukusima/227sawa1145x75.jpg" />
-            </GridTile>
+            {this.props.files.map(file => (
+              <GridTile>
+                <img className={styles.image} src={file.url} />
+              </GridTile>
+            ))}
           </GridList>
         </div>
       </div>

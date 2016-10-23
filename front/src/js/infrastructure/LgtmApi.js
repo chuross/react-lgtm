@@ -1,7 +1,6 @@
 import axios from 'axios'
 
-// const apiBaseUrl = process.env.API_URL;
-const apiBaseUrl = 'http://192.168.99.100:3000';
+const apiBaseUrl = '';
 
 export default class LgtmApi {
 
@@ -10,7 +9,7 @@ export default class LgtmApi {
       .then(res => res.data.result);
   }
 
-  static getImages(offset, limit) {
+  static getImages(offset = 0, limit = 20) {
     return axios.get(`${apiBaseUrl}/uploads`, {
       params: { offset: offset, limit: limit }
     }).then(res => res.data.result);

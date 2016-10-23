@@ -1,14 +1,14 @@
 import { handleActions } from 'redux-actions'
-import { uploadFileAction } from 'ui/actions/root'
+import { fetchImagesSuccess } from 'ui/actions/root'
 
 const defaultState = {
-  file: null
+  files: []
 };
 
 export default function uploadFile(state = defaultState, action) {
   return handleActions({
-    [uploadFileAction]: (state, action) => ({
-      file: null
+    [fetchImagesSuccess]: (state, action) => ({
+      files: action.payload
     })
   }, state)(state, action);
 }
