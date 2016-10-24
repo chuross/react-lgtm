@@ -33,7 +33,7 @@ export default class Root extends Component {
   }
 
   uploadImageFile(file) {
-    const canvas = this.refs.canvas;
+    const canvas = document.createElement("canvas");
     const image = new Image();
     image.src = file.preview;
     image.onload = () => {
@@ -88,13 +88,12 @@ export default class Root extends Component {
                 onClick={this.onUploadButtonClick.bind(this)} />
             </div>
           </Paper>
-          <canvas ref="canvas" className="image" />
         </div>
         <Divider />
         <div className={styles.image_grid_wrapper}>
           <GridList cols={5} cellHeight={200} padding={10}>
             {this.props.files.map(file => (
-              <GridTile>
+              <GridTile key={file.id}>
                 <img className={styles.image} src={file.url} />
               </GridTile>
             ))}
