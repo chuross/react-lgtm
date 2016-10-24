@@ -41,6 +41,11 @@ module.exports = {
       }
     ]
   },
+  externals: {
+    Config: JSON.stringify({
+      apiBaseUrl: process.env.LGTM_API_BASE_URL
+    })
+  },
   postcss: function() {
     return [atImport, autoprefixer, precss];
   },
