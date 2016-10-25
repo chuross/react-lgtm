@@ -37,6 +37,7 @@ export default class Root extends Component {
               </GridTile>
             ))}
           </GridList>
+          <div className={styles.list_bottom}>●</div>
         </div>
       </div>
     );

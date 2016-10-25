@@ -9,3 +9,10 @@
   object-fit: contain;
   width: 100%;
 }
+
+:local .list_bottom {
+  color: #666666;
+  font-size: 10px;
+  text-align: center;
+  margin: 15px;
+}
