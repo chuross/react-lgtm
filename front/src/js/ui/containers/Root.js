@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux'
 import * as actionCreators from 'ui/actions/root'
 import Appbar from 'material-ui/AppBar'
 import Divider from 'material-ui/Divider'
+import Paper from 'material-ui/Paper'
 import { GridList, GridTile } from 'material-ui/GridList'
 import UploadBlock from 'ui/components/UploadBlock'
 import styles from 'root.css'
@@ -33,7 +34,9 @@ export default class Root extends Component {
           <GridList cols={5} cellHeight={200} padding={10}>
             {this.props.files.map(file => (
               <GridTile key={file.id}>
-                <img className={styles.image} src={file.url} />
+                <Paper className={styles.image_wrapper}>
+                  <img className={styles.image} src={file.url} />
+                </Paper>
               </GridTile>
             ))}
           </GridList>

@@ -5,9 +5,16 @@
   margin: 10px auto;
 }
 
+:local .image_wrapper {
+  width: 95%;
+  height: 95%;
+  margin: 5px;
+}
+
 :local .image {
   object-fit: contain;
   width: 100%;
+  height: 100%;
 }
 
 :local .list_bottom {
