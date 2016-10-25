@@ -15,7 +15,7 @@ services:
     links:
       - mongo:mongo
     environment:
-      BASE_URL: "${LGTM_BASE_URL}"
+      BASE_URL: "${LGTM_API_BASE_URL}"
   mongo:
     image: tutum/mongodb
     container_name: react-lgtm-mongo
