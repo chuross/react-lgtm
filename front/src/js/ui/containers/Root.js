@@ -68,8 +68,6 @@ export default class Root extends Component {
       <div>
         <Appbar title="LGTM画像アップローダー" iconElementLeft={<span />} />
         <div className={styles.upload_container}>
-          <Paper className={styles.description_paper}>
-            <Subheader>画像のアップロード</Subheader>
             <div className={styles.description_upload}>
               <DropZone
                 className={styles.description_upload_dropzone}
@@ -87,7 +85,6 @@ export default class Root extends Component {
                 primary={true}
                 onClick={this.onUploadButtonClick.bind(this)} />
             </div>
-          </Paper>
         </div>
         <Divider />
         <div className={styles.image_grid_wrapper}>
