@@ -4,9 +4,8 @@ import { bindActionCreators } from 'redux'
 import * as actionCreators from 'ui/actions/root'
 import Appbar from 'material-ui/AppBar'
 import Divider from 'material-ui/Divider'
-import Paper from 'material-ui/Paper'
-import { GridList, GridTile } from 'material-ui/GridList'
 import UploadBlock from 'ui/components/UploadBlock'
+import ImageGridList from 'ui/components/ImageGridList'
 import styles from 'root.css'
 
 @connect(state => ({
@@ -30,18 +29,8 @@ export default class Root extends Component {
         <Appbar title="LGTM画像アップローダー" iconElementLeft={<span />} />
         <UploadBlock onCreateLgtmImage={this.onCreateLgtmImage.bind(this)} />
         <Divider />
-        <div className={styles.image_grid_wrapper}>
-          <GridList cols={5} cellHeight={200} padding={10}>
-            {this.props.files.map(file => (
-              <GridTile key={file.id}>
-                <Paper className={styles.image_wrapper}>
-                  <img className={styles.image} src={file.url} />
-                </Paper>
-              </GridTile>
-            ))}
-          </GridList>
-          <div className={styles.list_bottom}>●</div>
-        </div>
+        <ImageGridList images={this.props.files} />
+        <div className={styles.list_bottom}>●</div>
       </div>
     );
   }
