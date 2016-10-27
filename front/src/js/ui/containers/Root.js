@@ -10,7 +10,7 @@ import ImageGridList from 'ui/components/ImageGridList'
 import styles from 'root.css'
 
 @connect(state => ({
-  files: state.root.files || []
+  files: state.app.root.files || []
 }), dispatch => ({
   actions: bindActionCreators(actionCreators, dispatch)
 }))
