@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route } from 'react-router'
-import Root from 'ui/containers/Root'
+import IndexRoot from 'ui/containers/index/Root'
 
 export default (
-  <Route path="/" component={Root}  />
+  <Route path="/" component={IndexRoot}  />
 );

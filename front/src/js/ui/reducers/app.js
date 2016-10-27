@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
-import root from 'ui/reducers/root'
+import indexRoot from 'ui/reducers/index/root'
 
 export default combineReducers({
-  root
+  index: indexRoot
 });

@@ -1,7 +1,7 @@
 import { takeEvery } from 'redux-saga'
 import { call, put, fork } from 'redux-saga/effects'
 import LgtmApi from 'infrastructure/LgtmApi'
-import * as actions from 'ui/actions/root'
+import * as actions from 'ui/actions/index/root'
 
 function* fetchImages(action) {
   try {

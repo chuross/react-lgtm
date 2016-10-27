@@ -1,4 +1,4 @@
-import rootSaga from 'ui/sagas/root'
+import rootSaga from 'ui/sagas/index/root'
 import { fork } from 'redux-saga/effects'
 
 export default function* saga() {

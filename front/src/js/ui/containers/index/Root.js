@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import * as actionCreators from 'ui/actions/root'
+import * as actionCreators from 'ui/actions/index/root'
 import ForkRibbon from 'react-github-fork-ribbon'
 import Appbar from 'material-ui/AppBar'
 import Divider from 'material-ui/Divider'
@@ -10,7 +10,7 @@ import ImageGridList from 'ui/components/ImageGridList'
 import styles from 'root.css'
 
 @connect(state => ({
-  files: state.app.root.files || []
+  images: state.app.index.images || []
 }), dispatch => ({
   actions: bindActionCreators(actionCreators, dispatch)
 }))
@@ -33,7 +33,7 @@ export default class Root extends Component {
         <Appbar title="LGTM画像アップローダー" iconElementLeft={<span />} />
         <UploadBlock onCreateLgtmImage={this.onCreateLgtmImage.bind(this)} />
         <Divider />
-        <ImageGridList images={this.props.files} />
+        <ImageGridList images={this.props.images} />
         <div className={styles.list_bottom}>●</div>
       </div>
     );
