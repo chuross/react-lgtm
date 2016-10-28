@@ -7,7 +7,7 @@
     "start": "webpack --config webpack.config.js",
     "build": "npm start",
     "build:dev": "webpack --config webpack.dev.config.js",
-    "watch": "webpack-dev-server --hot --inline --history-api-fallback --config webpack.dev.config.js"
+    "watch": "webpack-dev-server --hot --inline --config webpack.dev.config.js"
   },
   "author": "",
   "license": "ISC",

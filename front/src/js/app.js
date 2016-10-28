@@ -3,7 +3,7 @@ import React from 'react'
 import ReactDom from 'react-dom'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware, combineReducers } from 'redux'
-import { Router, browserHistory } from 'react-router'
+import { Router, hashHistory } from 'react-router'
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme'
 import { MuiThemeProvider, getMuiTheme } from 'material-ui/styles'
@@ -27,7 +27,7 @@ const store = createStore(
   applyMiddleware(sagaMiddleware)
 );
 sagaMiddleware.run(saga);
-const history = syncHistoryWithStore(browserHistory, store);
+const history = syncHistoryWithStore(hashHistory, store);
 
 ReactDom.render(
   <MuiThemeProvider muiTheme={getMuiTheme(theme)}>
