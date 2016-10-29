@@ -1,5 +1,4 @@
 var path = require('path');
-var precss = require('precss');
 var atImport = require('postcss-import');
 var autoprefixer = require('autoprefixer');
 var webpackHtmlTemplate = require('html-webpack-template');
@@ -48,7 +47,7 @@ module.exports = {
     })
   },
   postcss: function() {
-    return [atImport, autoprefixer, precss];
+    return [atImport, autoprefixer];
   },
   resolve: {
     root: [jsDir, cssDir],
