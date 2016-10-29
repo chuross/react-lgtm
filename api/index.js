@@ -54,7 +54,7 @@ app.get('/uploads', cors(delegate), (req, res) => {
     res.json(getResult(images.map(image => ({
       id: image.id,
       size: image.size,
-      url: `${baseUrl}/uploads/${image.id}`
+      url: `${baseUrl}/uploads/${image.id}/raw`
     }))));
   });
 });
@@ -78,7 +78,7 @@ app.post('/uploads', cors(delegate), upload.single('file'), (req, res) => {
       res.json(getResult({
         id: result.id,
         size: result.size,
-        url: `${baseUrl}/uploads/${filename}`
+        url: `${baseUrl}/uploads/${filename}/raw`
       }));
     })
     .catch(err => {
@@ -89,15 +89,27 @@ app.post('/uploads', cors(delegate), upload.single('file'), (req, res) => {
 app.get('/uploads/:id', cors(delegate), (req,  res) => {
   Image.findOne({ id: req.params.id }).exec()
     .then(image => {
-      const data = fs.readFileSync(path.resolve(`uploads/${image.id}`));
-      res.set('Content-Type', image.mimeType).end(new Buffer(data), 'binary');
+      res.json(getResult({
+        id: image.id,
+        size: image.size,
+        url: `${baseUrl}/uploads/${image.id}/raw`
+      }))
     })
-    .catch(err => res.status(404));
+    .catch(err => res.json(getResult('取得に失敗しました')));
 });
 
 app.delete('/uploads/:id', cors(delegate), (req, res) => {
   Image.remove({ id: req.params.id }).exec()
     .then(() => fs.unlinkSync(path.resolve(`uploads/${req.params.id}`)))
-    .then(() => res.send(getResult(true)))
+    .then(() => res.json(getResult(true)))
     .catch(err => res.send(getResult('削除に失敗しました')));
+});
+
+app.get('/uploads/:id/raw', cors(delegate), (req,  res) => {
+  Image.findOne({ id: req.params.id }).exec()
+    .then(image => {
+      const data = fs.readFileSync(path.resolve(`uploads/${image.id}`));
+      res.set('Content-Type', image.mimeType).end(new Buffer(data), 'binary');
+    })
+    .catch(err => res.status(404));
 });

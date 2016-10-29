@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actionCreators from 'ui/actions/index/root'
-import ForkRibbon from 'react-github-fork-ribbon'
-import Appbar from 'material-ui/AppBar'
 import Divider from 'material-ui/Divider'
 import UploadBlock from 'ui/components/UploadBlock'
 import ImageGridList from 'ui/components/ImageGridList'
@@ -27,10 +25,6 @@ export default class Root extends Component {
   render() {
     return (
       <div>
-        <ForkRibbon
-          color='green'
-          href='https://github.com/chuross/react-lgtm'>Fork me on GitHub</ForkRibbon>
-        <Appbar title="LGTM画像アップローダー" iconElementLeft={<span />} />
         <UploadBlock onCreateLgtmImage={this.onCreateLgtmImage.bind(this)} />
         <Divider />
         <ImageGridList images={this.props.images} />
