@@ -5,8 +5,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const cors = require('cors');
 const multer  = require('multer');
+const configs = require('config');
 
-const baseUrl = process.env.BASE_URL;
+const baseUrl = configs.baseUrl;
 const port = process.env.PORT || 3000;
 const mongoHost = process.env.MONGODB_HOST || 'mongo';
 const maxFileSize = process.env.MAX_FILE_SIZE || 1 * 1000 * 1000; // 1M

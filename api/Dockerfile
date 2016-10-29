@@ -7,6 +7,7 @@ EXPOSE 3000
 # setup app
 WORKDIR workspace/
 
+COPY config ./config
 COPY index.js ./
 COPY package.json ./
 
