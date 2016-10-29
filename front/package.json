@@ -23,6 +23,7 @@
     "css-loader": "^0.25.0",
     "html-webpack-plugin": "^2.22.0",
     "html-webpack-template": "^5.4.1",
+    "jsx-control-statements": "^3.1.5",
     "postcss-import": "^8.1.2",
     "postcss-loader": "^0.13.0",
     "precss": "^1.4.0",

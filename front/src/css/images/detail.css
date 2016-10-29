@@ -1,0 +1,14 @@
+:local .detail__image {
+  padding: 15px;
+  text-align: center;
+}
+
+:local .detail__markdown {
+  width: 70%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+:local .detail__markdown__copy_button {
+  margin: 10px;
+}
