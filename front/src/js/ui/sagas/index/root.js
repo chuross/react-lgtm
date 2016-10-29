@@ -1,15 +1,18 @@
 import { takeEvery } from 'redux-saga'
 import { call, put, fork } from 'redux-saga/effects'
 import LgtmApi from 'infrastructure/LgtmApi'
+import { loading } from 'ui/actions/loading'
 import * as actions from 'ui/actions/index/root'
 
 function* fetchImages(action) {
+  yield put(loading(true));
   try {
     const result = yield call(LgtmApi.getImages);
     yield put(actions.fetchImagesSuccess(result));
   } catch(e) {
     yield put(actions.fetchImagesFail(e));
   }
+  yield put(loading(false));
 }
 
 function* handleFetchImages() {

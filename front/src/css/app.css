@@ -1,0 +1,9 @@
+@import "normalize.css";
+
+:local .loading_visible {
+  display: block;
+}
+
+:local .loading_invisible {
+  display: none;
+}

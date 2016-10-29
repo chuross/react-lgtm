@@ -5,7 +5,7 @@ const defaultState = {
   images: []
 };
 
-export default function uploadFile(state = defaultState, action) {
+export default (state = defaultState, action) => {
   return handleActions({
     [fetchImagesSuccess]: (state, action) => ({
       images: action.payload
@@ -13,5 +13,5 @@ export default function uploadFile(state = defaultState, action) {
     [uploadImageSuccess]: (state, action) => ({
       images: [action.payload, ...state.images]
     })
-  }, state)(state, action);
+  })(state, action);
 }
