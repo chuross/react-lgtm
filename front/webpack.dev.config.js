@@ -1,4 +1,5 @@
 var path = require('path');
+var configs = require('config');
 var atImport = require('postcss-import');
 var autoprefixer = require('autoprefixer');
 var webpackHtmlTemplate = require('html-webpack-template');
@@ -42,9 +43,7 @@ module.exports = {
     ]
   },
   externals: {
-    Config: JSON.stringify({
-      apiBaseUrl: process.env.LGTM_API_BASE_URL
-    })
+    Config: JSON.stringify(configs)
   },
   postcss: function() {
     return [atImport, autoprefixer];
