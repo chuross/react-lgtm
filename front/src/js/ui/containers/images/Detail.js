@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actionCreators from 'ui/actions/images/detail'
 import TextField from 'material-ui/TextField'
-import RaisedButton from 'material-ui/RaisedButton'
+import ClipBoardButton from 'react-clipboard.js'
 import styles from 'images/detail.css'
 
 @connect(state => ({
@@ -32,7 +32,7 @@ export default class Detail extends Component {
         <div className={styles.detail__markdown}>
           <If condition={this.props.image}>
             <TextField fullWidth={true} multiLine={true} value={this.getMarkdownText()} />
-            <RaisedButton className={styles.detail__markdown__copy_button} label="コピーする" primary={true} />
+            <ClipBoardButton data-clipboard-text={this.getMarkdownText()}>コピーする</ClipBoardButton>
           </If>
         </div>
       </div>

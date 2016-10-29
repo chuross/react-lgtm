@@ -39,6 +39,7 @@
     "material-ui": "^0.16.0",
     "normalize.css": "^5.0.0",
     "react": "^15.4.0-rc.4",
+    "react-clipboard.js": "^0.2.5",
     "react-dom": "^15.4.0-rc.4",
     "react-dropzone": "^3.6.0",
     "react-github-fork-ribbon": "^0.4.4",
