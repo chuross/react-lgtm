@@ -32,7 +32,7 @@ export default class Detail extends Component {
         </div>
         <div className={styles.detail__markdown}>
           <If condition={this.props.image}>
-            <TextField fullWidth={true} multiLine={true} value={this.getMarkdownText()} />
+            <TextField name="markdown_text" fullWidth={true} multiLine={true} value={this.getMarkdownText()} />
             <ClipBoardButton
               className={styles.detail__markdown__copy_button}
               data-clipboard-text={this.getMarkdownText()}
