@@ -1,15 +1,15 @@
-:local .image_grid_wrapper {
+:local .grid {
   width: 90%;
   margin: 10px auto;
 }
 
-:local .image_wrapper {
+:local .grid__image {
   width: 95%;
   height: 95%;
   margin: 5px;
 }
 
-:local .image {
+:local .grid__image__img {
   object-fit: contain;
   width: 100%;
   height: 100%;

@@ -1,31 +1,31 @@
-:local .upload_container {
+:local .uploadBlock {
   background: #f3f3f3;
   padding: 20px;
 }
 
-:local .description_upload {
+:local .uploadBlock__description {
   padding: 15px;
   text-align: center;
 }
 
-:local .description_upload_dropzone {
+:local .uploadBlock__description__dropzone {
   width: 80%;
   margin: 0 auto;
   padding: 20px;
   border: 2px dashed #666666;
 }
 
-:local .description_upload_text {
+:local .uploadBlock__description__text {
   font-size: 25px;
   margin: 5px;
 }
 
-:local .description_upload_subtext {
+:local .uploadBlock__description__subtext {
   color: #999999;
   font-size: 15px;
   margin: 15px 0 0 0;
 }
 
-:local .description_upload_button {
+:local .uploadBlock__description__uploadButton {
   margin-top: 25px;
 }

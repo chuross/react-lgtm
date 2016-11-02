@@ -5,7 +5,7 @@ import * as actionCreators from 'ui/actions/index/root'
 import Divider from 'material-ui/Divider'
 import UploadBlock from 'ui/components/UploadBlock'
 import ImageGridList from 'ui/components/ImageGridList'
-import styles from 'root.css'
+import styles from 'index/root.css'
 
 @connect(state => ({
   images: state.app.index.images || []
@@ -28,7 +28,7 @@ export default class Root extends Component {
         <UploadBlock onCreateLgtmImage={this.onCreateLgtmImage.bind(this)} />
         <Divider />
         <ImageGridList images={this.props.images} />
-        <div className={styles.list_bottom}>●</div>
+        <div className={styles.listBottom}>●</div>
       </div>
     );
   }

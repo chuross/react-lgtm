@@ -51,20 +51,20 @@ export default class UploadBlock extends Component {
 
   render() {
     return (
-      <div className={styles.upload_container}>
-          <div className={styles.description_upload}>
+      <div className={styles.uploadBlock}>
+          <div className={styles.uploadBlock__description}>
             <DropZone
-              className={styles.description_upload_dropzone}
+              className={styles.uploadBlock__description__dropzone}
               ref={(node) => { this.dropzone = node; }}
               accept="image/gif,image/jpeg,image/png,image/jpg"
               disableClick={true}
               onDrop={this.onImageDrop.bind(this)}>
               <div><FileUploadIcon style={{ width: '100px', height: '100px'}} /></div>
-              <p className={styles.description_upload_text}>画像をここにドラッグ&amp;ドロップ</p>
+              <p className={styles.uploadBlock__description__text}>画像をここにドラッグ&amp;ドロップ</p>
             </DropZone>
-            <p className={styles.description_upload_subtext}>または下のボタンから画像を選択できます</p>
+            <p className={styles.uploadBlock__description__subtext}>または下のボタンから画像を選択できます</p>
             <RaisedButton
-              className={styles.description_upload_button}
+              className={styles.uploadBlock__description__uploadButton}
               label="画像を選択"
               primary={true}
               onClick={this.onUploadButtonClick.bind(this)} />

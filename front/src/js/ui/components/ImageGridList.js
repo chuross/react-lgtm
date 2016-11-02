@@ -12,13 +12,13 @@ export default class ImageGridList extends Component {
 
   render() {
     return (
-      <div className={styles.image_grid_wrapper}>
+      <div className={styles.grid}>
         <GridList cols={5} cellHeight={200} padding={10}>
           {this.props.images.map(image => (
             <GridTile key={image.id}>
-              <Paper className={styles.image_wrapper}>
+              <Paper className={styles.grid__image}>
                 <Link to={`/images/${image.id}`}>
-                  <img className={styles.image} src={image.url} />
+                  <img className={styles.grid__image__img} src={image.url} />
                 </Link>
               </Paper>
             </GridTile>
