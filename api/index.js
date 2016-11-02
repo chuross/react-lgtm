@@ -53,8 +53,7 @@ app.get('/uploads', cors(delegate), (req, res) => {
     sort: { createdAt: -1 },
     skip: req.query.offset || 0,
     limit: req.query.limit || 20
-  })
-  .then(images => {
+  }).exec().then(images => {
     res.json(getResult(images.map(image => ({
       id: image.id,
       size: image.size,
