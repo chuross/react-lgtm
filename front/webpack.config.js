@@ -1,4 +1,5 @@
 var path = require('path');
+var configs = require('config');
 var atImport = require('postcss-import');
 var autoprefixer = require('autoprefixer');
 var webpackHtmlTemplate = require('html-webpack-template');
@@ -11,7 +12,8 @@ module.exports = {
   entry: `${jsDir}/app.js`,
   output: {
     path: path.resolve('public'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    publicPath: '/'
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -33,6 +35,9 @@ module.exports = {
         loader: 'style!css!postcss'
       }
     ]
+  },
+  externals: {
+    Config: JSON.stringify(configs)
   },
   postcss: function() {
     return [atImport, autoprefixer];
