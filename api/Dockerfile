@@ -5,7 +5,7 @@ WORKDIR /workspace
 EXPOSE 3000
 
 # setup app
-WORKDIR workspace/
+WORKDIR /workspace
 
 COPY config ./config
 COPY index.js ./

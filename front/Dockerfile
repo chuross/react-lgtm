@@ -13,7 +13,7 @@ COPY nginx_docker.conf /etc/nginx/conf.d
 
 
 # setup app
-WORKDIR workspace/
+WORKDIR /workspace
 
 COPY src src/
 COPY .babelrc ./
