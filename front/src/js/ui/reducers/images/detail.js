@@ -5,10 +5,8 @@ const defaultState = {
   image: null
 };
 
-export default (state = defaultState, action) => {
-  return handleActions({
-    [fetchImageSuccess]: (state, action) => ({
-      image: action.payload
-    })
-  })(state, action);
-}
+export default handleActions({
+  [fetchImageSuccess]: (state, action) => ({
+    image: action.payload
+  })
+}, defaultState);
