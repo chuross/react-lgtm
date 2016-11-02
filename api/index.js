@@ -1,3 +1,7 @@
+/**
+* Reactを触りたいだけなので雑に作る(気が向いたらちゃんと作る)
+*/
+
 const fs = require('fs');
 const path = require('path');
 const express = require('express');
