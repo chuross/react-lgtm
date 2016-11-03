@@ -13,7 +13,7 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <Appbar title="LGTM画像アップローダー" iconElementLeft={<span />} />
+        <Appbar title="LGTM画像アップローダー(β)" iconElementLeft={<span />} />
         <ForkRibbon
           color='green'
           href='https://github.com/chuross/react-lgtm'>Fork me on GitHub</ForkRibbon>

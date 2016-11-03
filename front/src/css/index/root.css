@@ -1,8 +1,18 @@
 @import "normalize.css";
 
-:local .listBottom {
+:local .scrollEnd {
   color: #ababab;
   font-size: 10px;
   text-align: center;
   margin: 15px;
+}
+
+:local .appendButton {
+  width: 90%;
+  margin: 20px auto;
+}
+
+:local .appendButton__button {
+  width: 100%;
+  text-align: center;
 }
