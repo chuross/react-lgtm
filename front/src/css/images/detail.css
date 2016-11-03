@@ -9,6 +9,10 @@
   text-align: center;
 }
 
-:local .detail__markdown__copy_button {
+:local .detail__markdown__button {
+  margin: 0px 15px;
+}
+
+:local .detail__markdown__copyButton {
   margin: 10px;
 }
