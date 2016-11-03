@@ -1,1 +1,5 @@
 baseUrl:
+mongodbHost:
+mongodbPort:
+mongodbUser:
+mongodbPW:

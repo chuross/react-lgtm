@@ -13,17 +13,23 @@ const configs = require('config');
 
 const baseUrl = configs.baseUrl;
 const port = process.env.PORT || 3000;
-const mongoHost = process.env.MONGODB_HOST || 'mongo';
-const mongoPort = process.env.MONGODB_PORT || 27017;
-const mongoUser = process.env.MONGODB_USERNAME || 'root';
-const mongoPW = process.env.MONGODB_PASSWORD || '';
+const mongoRequireAuth = process.env.MONGODB_AUTH || 'false';
+const mongoHost = configs.mongoHost || 'mongo';
+const mongoPort = configs.mongoPort || 27017;
+const mongoUser = configs.mongoUser || 'root';
+const mongoPW = configs.mongoPW || '';
 
 const maxFileSize = process.env.MAX_FILE_SIZE || 1 * 1000 * 1000; // 1M
 
 const app = express();
 app.listen(port, () => console.log(`launch server port=${port}`));
 
-mongoose.connect(`mongodb://${mongoUser}:${mongoPW}@${mongoHost}:${mongoPort}/lgtm`);
+if (mongoRequireAuth == 'true') {
+  mongoose.connect(`mongodb://${mongoUser}:${mongoPW}@${mongoHost}:${mongoPort}/lgtm`);
+} else {
+  mongoose.connect(`mongodb://${mongoHost}/lgtm`);
+}
+
 const Image = mongoose.model('image', new Schema({
   id: { type: String, required: true, unique: true },
   mimeType: { type: String, required: true },
