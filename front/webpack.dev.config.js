@@ -1,10 +1,10 @@
-var path = require('path');
-var configs = require('config');
-var atImport = require('postcss-import');
-var autoprefixer = require('autoprefixer');
-var webpackHtmlTemplate = require('html-webpack-template');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var WebpackNotifierPlugin = require('webpack-notifier');
+const path = require('path');
+const configs = require('config');
+const atImport = require('postcss-import');
+const autoprefixer = require('autoprefixer');
+const webpackHtmlTemplate = require('html-webpack-template');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const WebpackNotifierPlugin = require('webpack-notifier');
 
 const jsDir = path.resolve('src/js');
 const cssDir = path.resolve('src/css');

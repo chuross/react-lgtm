@@ -1,9 +1,10 @@
-var path = require('path');
-var configs = require('config');
-var atImport = require('postcss-import');
-var autoprefixer = require('autoprefixer');
-var webpackHtmlTemplate = require('html-webpack-template');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require("webpack");
+const path = require('path');
+const configs = require('config');
+const atImport = require('postcss-import');
+const autoprefixer = require('autoprefixer');
+const webpackHtmlTemplate = require('html-webpack-template');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const jsDir = path.resolve('src/js');
 const cssDir = path.resolve('src/css');
@@ -21,7 +22,8 @@ module.exports = {
       template: webpackHtmlTemplate,
       appMountId: 'app',
       title: 'LGTM画像アップローダー'
-    })
+    }),
+    new webpack.optimize.UglifyJsPlugin()
   ],
   module: {
     loaders: [
