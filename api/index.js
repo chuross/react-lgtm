@@ -127,7 +127,7 @@ app.delete('/uploads/:id', cors(delegate), (req, res) => {
     });
 });
 
-app.get('/uploads/:id/raw', cors(delegate), (req,  res) => {
+app.get('/uploads/:id/raw', cors(delegate), (req, res) => {
   Image.findOne({ id: req.params.id }).exec()
     .then(image => {
       const data = fs.readFileSync(path.resolve(`uploads/${image.id}`));
