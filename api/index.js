@@ -39,7 +39,10 @@ const Image = mongoose.model('image', new Schema({
 }));
 
 const delegate = (res, callback) => {
-  return callback(null, { origin: true });
+  return callback(null, {
+    origin: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE']
+  });
 };
 
 const upload = multer({
@@ -54,11 +57,13 @@ function getResult(payload) {
   return { result: payload };
 }
 
+app.use(cors(delegate));
+
 app.get('/', (req, res) => {
   res.json(getResult('welcome'));
 });
 
-app.get('/uploads', cors(delegate), (req, res) => {
+app.get('/uploads', (req, res) => {
   Image.find({}, {}, {
     sort: { createdAt: -1 },
     skip: req.query.offset || 0,
@@ -75,7 +80,7 @@ app.get('/uploads', cors(delegate), (req, res) => {
   });
 });
 
-app.post('/uploads', cors(delegate), upload.single('file'), (req, res) => {
+app.post('/uploads', upload.single('file'), (req, res) => {
   if (!req.file) {
     res.status(400).json(getResult('ファイルがアップロードされていません'));
     return;
@@ -103,7 +108,7 @@ app.post('/uploads', cors(delegate), upload.single('file'), (req, res) => {
     });
 });
 
-app.get('/uploads/:id', cors(delegate), (req,  res) => {
+app.get('/uploads/:id', (req,  res) => {
   Image.findOne({ id: req.params.id }).exec()
     .then(image => {
       res.json(getResult({
@@ -117,7 +122,7 @@ app.get('/uploads/:id', cors(delegate), (req,  res) => {
     });
 });
 
-app.delete('/uploads/:id', cors(delegate), (req, res) => {
+app.delete('/uploads/:id', (req, res) => {
   Image.remove({ id: req.params.id }).exec()
     .then(() => fs.unlinkSync(path.resolve(`uploads/${req.params.id}`)))
     .then(() => res.json(getResult(true)))
@@ -127,13 +132,13 @@ app.delete('/uploads/:id', cors(delegate), (req, res) => {
     });
 });
 
-app.get('/uploads/:id/raw', cors(delegate), (req, res) => {
+app.get('/uploads/:id/raw', (req, res) => {
   Image.findOne({ id: req.params.id }).exec()
     .then(image => {
       const data = fs.readFileSync(path.resolve(`uploads/${image.id}`));
       res.set('Content-Type', image.mimeType).end(new Buffer(data), 'binary');
     }).catch(err => {
       console.log(err);
-      res.status(404);
+      res.status(404).send('');
     });
 });

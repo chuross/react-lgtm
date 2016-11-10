@@ -14,8 +14,8 @@ export default class ImageGridList extends Component {
     return (
       <div className={styles.grid}>
         <GridList cols={5} cellHeight={200} padding={10}>
-          {this.props.images.map(image => (
-            <GridTile key={image.id}>
+          {this.props.images.map((image, index) => (
+            <GridTile key={index}>
               <Paper className={styles.grid__image}>
                 <Link to={`/images/${image.id}`}>
                   <img className={styles.grid__image__img} src={image.url} />

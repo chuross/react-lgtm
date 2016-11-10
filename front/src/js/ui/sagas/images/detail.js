@@ -26,7 +26,7 @@ function* deleteImage(action) {
     yield call(LgtmApi.deleteImage, action.payload);
     hashHistory.push('/');
   } catch(e) {
-    yield put(actions.fetchImageFail(e));
+    yield put(actions.deleteImageFail(e));
   }
   yield put(loading(false));
 }
