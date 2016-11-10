@@ -1,9 +1,21 @@
 @import "normalize.css";
 
-:local .loading_visible {
+:local .app {
+  position: relative;
+  height: 100%;
+}
+
+:local .app__loadingVisible {
+  position: absolute;
   display: block;
 }
 
-:local .loading_invisible {
-  display: none;
+:local .app__loadingInvisible {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  right: 0;
+  bottom: 0;
+  margin: 0 -24px;
+  display: block;
 }

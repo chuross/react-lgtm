@@ -12,15 +12,15 @@ export default class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className={styles.app}>
         <Appbar title="LGTM画像アップローダー(β)" iconElementLeft={<span />} />
         <ForkRibbon
           color='green'
           href='https://github.com/chuross/react-lgtm'>Fork me on GitHub</ForkRibbon>
-        {this.props.children}
-        <div className={this.props.isLoading ? styles.loading_visible : styles.loading_invisible}>
+        <div className={this.props.isLoading ? styles.app__loadingVisible : styles.app__loadingInvisible}>
           <CircularProgress />
         </div>
+        {this.props.children}
       </div>
     );
   }
