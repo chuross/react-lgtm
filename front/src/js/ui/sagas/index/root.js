@@ -8,7 +8,7 @@ function* fetchImages(action) {
   yield put(loading(true));
   try {
     const result = yield call(LgtmApi.getImages, action.payload.offset, action.payload.limit);
-    yield put(actions.fetchImagesSuccess(result));
+    yield put(actions.fetchImagesSuccess(result, action.payload.offset === 0));
   } catch(e) {
     yield put(actions.fetchImagesFail(e));
   }

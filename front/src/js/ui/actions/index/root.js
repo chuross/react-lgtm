@@ -1,7 +1,7 @@
 import { createAction } from 'redux-actions'
 
 export const fetchImages = createAction('INDEX_FETCH_IMAGES', (offset = 0, limit = 20) => ({offset: offset, limit: limit}));
-export const fetchImagesSuccess = createAction('INDEX_FETCH_IMAGES_SUCCESS', images => images);
+export const fetchImagesSuccess = createAction('INDEX_FETCH_IMAGES_SUCCESS', (images, isInitialized) => ({ images, isInitialized }));
 export const fetchImagesFail = createAction('INDEX_FETCH_IMAGES_FAIL', error => error);
 
 export const uploadImage = createAction('INDEX_UPLOAD_IMAGE', blob => blob);
