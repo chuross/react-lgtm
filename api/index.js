@@ -25,9 +25,9 @@ const app = express();
 app.listen(port, () => console.log(`launch server port=${port}`));
 
 if (mongoRequireAuth == 'true') {
-  mongoose.connect(`mongodb://${mongoUser}:${mongoPW}@${mongoHost}:${mongoPort}/lgtm`);
+  mongoose.connect(`mongodb://${mongoUser}:${mongoPW}@${mongoHost}:${mongoPort}/lgtm`, { useMongoClient: true });
 } else {
-  mongoose.connect(`mongodb://${mongoHost}/lgtm`);
+  mongoose.connect(`mongodb://${mongoHost}/lgtm`, { useMongoClient: true });
 }
 
 const Image = mongoose.model('image', new Schema({
